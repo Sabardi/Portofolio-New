@@ -60,8 +60,8 @@
                     <div class="col-lg-5 col-sm-12">
                         <div class="banner-right-con position-relative wow slideInRight" id="banner-right-con">
                             <figure class="mb-0">
-                                <img src="{{ asset('assets') }}/image/profile/sabardi.png" width="100%"
-                                    height="70%" alt="banner-right-img" id="banner-right-img">
+                                <img src="{{ asset('assets') }}/image/profile/sabardi.png" width="100%" height="70%"
+                                    alt="banner-right-img" id="banner-right-img">
                             </figure>
                             <div class="cursor"></div>
                             <div class="cursor2"></div>
@@ -115,8 +115,7 @@
                                         </a>
                                     </li>
                                     <li class="mr-3">
-                                        <a href="https://github.com/Sabardi" target="_blank"
-                                            rel="noopener noreferrer">
+                                        <a href="https://github.com/Sabardi" target="_blank" rel="noopener noreferrer">
                                             <img src="https://img.icons8.com/ios-filled/50/000000/github.png"
                                                 alt="GitHub" style="height: 30px; width: 30px;">
                                         </a>

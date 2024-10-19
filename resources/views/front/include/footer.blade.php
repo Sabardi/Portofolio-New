@@ -41,4 +41,3 @@
     </div>
 </div>
 <a id="button"></a>
-<!-- weight footer section -->

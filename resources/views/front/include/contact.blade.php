@@ -1,4 +1,3 @@
-        <!-- form section -->
         <section class="w-100 float-left form-main-con padding-top padding-bottom" id="Contact">
             <div class="container">
                 <div class="form-main-inner-con position-relative">
@@ -18,7 +17,8 @@
                                         </figure>
                                         <div class="contact-information-content">
                                             <h5>Address:</h5>
-                                            <p class="mb-0">Apitaik Kec. Pringgabaya Kabupaten Lombok Timur Nusa Tenggara
+                                            <p class="mb-0">Apitaik Kec. Pringgabaya Kabupaten Lombok Timur Nusa
+                                                Tenggara
                                                 Barat.
                                                 Indonesia
                                             </p>
@@ -37,7 +37,8 @@
                                     </li>
                                     <li class="mb-0">
                                         <figure class="mb-0 d-flex align-items-center justify-content-center">
-                                            <img src="{{ asset('assets') }}/image/phone-icon.png" alt="phone-icon" class="img-fluid">
+                                            <img src="{{ asset('assets') }}/image/phone-icon.png" alt="phone-icon"
+                                                class="img-fluid">
                                         </figure>
                                         <div class="contact-information-content">
                                             <h5>Phone:</h5>
@@ -48,11 +49,11 @@
                             </div>
                         </div>
                         <div class="col-lg-8">
-    
+
                             <div id="form_result">
-    
+
                             </div>
-    
+
                             <form id="contactpage" method="POST" action="contact-form.php"
                                 class="contact-form wow slideInRight text-lg-left text-center">
                                 <div class="row">
@@ -90,10 +91,9 @@
                                 </div>
                                 <button type="submit" id="submit" class="appointment-btn">Submit</button>
                             </form>
-    
+
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- form section -->
