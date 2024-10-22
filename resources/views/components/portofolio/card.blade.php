@@ -6,7 +6,7 @@
             </figure>
         </div>
     </a>
-    <div class="portfolio-img-content text-left">
+    <div class="text-left portfolio-img-content">
         <div class="portfolio-img-title d-inline-block">
             <h4>Furni furniture UI Design</h4>
             <p>Dolar repellendus temporibus...</p>

@@ -3,7 +3,7 @@
     <section class="banner-main-con" id="home">
         <div class="container pl-0 pr-0">
             <!--banner-start-->
-            <div class="footer-social-icon banner-social-icon mb-0">
+            <div class="mb-0 footer-social-icon banner-social-icon">
                 <ul class="mb-0 list-unstyled">
                     <li class="mt-3 mb-3">
                         <a href="https://www.linkedin.com/in/sabardi" target="_blank"><i
@@ -11,7 +11,7 @@
                     </li>
                     <li class="mt-3 mb-3">
                         <a href="https://www.facebook.com/sabardi.sihantulaut" target="_blank"><i
-                                class="bi bi-facebook d-flex align-items-center justify-content-center ml-0 mr-0 ">
+                                class="ml-0 mr-0 bi bi-facebook d-flex align-items-center justify-content-center ">
                             </i></a>
                     </li>
                     <li class="mt-3 mb-3">
@@ -26,7 +26,7 @@
 
                 </ul>
             </div>
-            <div class="banner-con text-lg-left text-center">
+            <div class="text-center banner-con text-lg-left">
                 <div class="row">
                     <div class="col-lg-7 col-sm-12 d-flex justify-content-center flex-column">
                         <div class="banner-left-con wow slideInLeft">
@@ -72,11 +72,11 @@
             <!--banner-end-->
         </div>
     </section>
-    <section class="w-100 float-left service-con padding-top padding-bottom position-relative" id="about">
+    <section class="float-left w-100 service-con padding-top padding-bottom position-relative" id="about">
         <div class="container">
             <div class="skill-inner-con position-relative">
                 <div class="row">
-                    <div class="col-lg-6 order-lg-0 order-2">
+                    <div class="order-2 col-lg-6 order-lg-0">
                         <div class="skill-left-con justify-content-center wow slideInLeft">
                             <h1>About Me</h1>
                             <div class="">
@@ -93,7 +93,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 order-lg-0 order-2">
+                    <div class="order-2 col-lg-6 order-lg-0">
                         <div class="skill-left-con justify-content-center wow slideInLeft">
                             <h2>Mari Berteman</h2>
                             <p>
@@ -106,7 +106,7 @@
                             <div class="social-media">
                                 <h3>Sosial Media Saya</h3>
                                 <p>Anda dapat terhubung dengan saya melalui platform berikut:</p>
-                                <ul class="list-unstyled d-flex flex-wrap">
+                                <ul class="flex-wrap list-unstyled d-flex">
                                     <li class="mr-3">
                                         <a href="https://www.linkedin.com/in/sabardi" target="_blank"
                                             rel="noopener noreferrer">
@@ -145,10 +145,10 @@
     </section>
     <!-- service section -->
     <!-- skill section -->
-    <section class="w-100 float-left skill-con padding-top padding-bottom position-relative" id="about-con">
+    <section class="float-left w-100 skill-con padding-top padding-bottom position-relative" id="about-con">
         <div class="container">
             <div class="service-inner-con position-relative">
-                <div class="generic-title text-center">
+                <div class="text-center generic-title">
                     <h6>New Project</h6>
                     <h2 class="mb-0">Check New Project
                     </h2>
@@ -188,7 +188,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row mb-0">
+                    <div class="mb-0 row">
                         <div class="col-lg-6 col-md-6">
                             <div class="service-box-item">
                                 <figure class="mb-0">
@@ -207,7 +207,7 @@
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
-                            <div class="service-box-item mb-0">
+                            <div class="mb-0 service-box-item">
                                 <figure class="mb-0">
                                     <img src="{{ asset('assets') }}/image/service-icon4.png" alt="service-icon"
                                         class="img-fluid">
@@ -230,9 +230,9 @@
     </section>
     <!-- skill section -->
     <!-- portfolio section -->
-    <section class="w-100 float-left portfolio-con padding-top" id="Portfolio">
+    <section class="float-left w-100 portfolio-con padding-top" id="Portfolio">
         <div class="container">
-            <div class="generic-title text-center">
+            <div class="text-center generic-title">
                 <h6 class="text-white">All</h6>
                 <h2 class="mb-0 text-white">Check My Portfolio</h2>
             </div>
@@ -248,9 +248,9 @@
     <!-- portfolio section -->
 
     <!-- portfolio section -->
-    <section class="w-100 float-left portfolio-body-con">
+    <section class="float-left w-100 portfolio-body-con">
         <div class="container">
-            <div class="portfolio-img-con position-relative w-100 float-left wow fadeInUp">
+            <div class="float-left portfolio-img-con position-relative w-100 wow fadeInUp">
                 <div class="filterDiv cars position-relative">
                     <a href="#" data-toggle="modal" data-target="#modalWPWAF">
                         <div class="portfolio-img position-relative">
@@ -260,7 +260,7 @@
                             </figure>
                         </div>
                     </a>
-                    <div class="portfolio-img-content text-left">
+                    <div class="text-left portfolio-img-content">
                         <div class="portfolio-img-title d-inline-block">
                             <h4>Application UI Design</h4>
                             <p>Dolar repellendus temporibus...</p>
@@ -270,36 +270,82 @@
                         </a>
                     </div>
                 </div>
-                <x-portofolio.card />
-                <x-portofolio.card />
-                <x-portofolio.card />
-                <x-portofolio.card />
+                @foreach ($portofolios as $portfolio)
+                    <div class="filterDiv colors position-relative">
+                        <a href="#" data-toggle="modal" data-target="#modalporfolio2">
+                            <div class="portfolio-img position-relative">
+                                <figure>
+                                    <img src="{{ Storage::url($portfolio->photo) }}" alt="portfolio-img1"
+                                        class="img-fluid" width="730px" height="330px">
+
+                                    {{-- <img src="{{ asset('assets') }}/image/portfolio-img2.png" alt="portfolio-img1" class="img-fluid"> --}}
+                                </figure>
+                            </div>
+                        </a>
+                        <div class="text-left portfolio-img-content">
+                            <div class="portfolio-img-title d-inline-block">
+                                <h4>{{ $portfolio->title }}</h4>
+                                <p>{!! $portfolio->content !!}</p>
+                            </div>
+                            <a href="#" class="float-lg-right" data-toggle="modal"
+                                data-target="#modalporfolio2-icon">
+                                <i class="fas fa-arrow-right d-flex align-items-center justify-content-center"></i>
+                            </a>
+                        </div>
+
+                    </div>
+                @endforeach
+
+                {{-- <x-portofolio.card /> --}}
             </div>
         </div>
     </section>
     <!-- portfolio section -->
 
     <!-- blog section -->
-    <section class="w-100 float-left blog-con padding-top padding-bottom position-relative" id="blog">
+    <section class="float-left w-100 blog-con padding-top padding-bottom position-relative" id="blog">
         <div class="container">
             <div class="blog-inner-con position-relative">
-                <div class="generic-title text-center">
+                <div class="text-center generic-title">
                     <h6>Latest News</h6>
                     <h2 class="mb-0">Blog & Articles</h2>
                 </div>
                 <div class="blog-box wow fadeInUp">
                     <div class="row">
-                        <x-artikel.card />
-                        <x-artikel.card />
-                        <x-artikel.card />
-                        <x-artikel.card />
-                        <x-artikel.card />
-                        <x-artikel.card />
+                        @foreach ($portofolios as $portfolio)
+                            <div class="col-lg-4">
+                                <div class="mb-3 blog-box-item">
+                                    <div class="blog-img">
+                                        <a href="#" data-toggle="modal" data-target="#blog-model-1">
+                                            <figure class="mb-0">
+                                                <img src="{{ Storage::url($portfolio->photo) }}" alt="blog-img"
+                                                    class="img-fluid">
+                                            </figure>
+                                        </a>
+                                    </div>
+                                    <div class="blog-content">
+                                        <div class="blog-auteher-title">
+                                            <span>By {{ $portfolio->author }}</span>
+                                            {{-- <span class="float-lg-right">Mar 8, 2022</span> --}}
+                                            <span
+                                                class="float-lg-right">{{ $portfolio->created_at->format('M j, Y') }}</span>
+                                        </div>
+                                        <a href="#" data-toggle="modal" data-target="#blog-model-1">
+                                            <h4>{{ Str::words($portfolio->title, 15) }}</h4>
+                                        </a>
+                                        <p>{!! Str::words($portfolio->content, 15) !!}
+                                        </p>
+                                        <a href="#" data-toggle="modal" data-target="#blog-model-1">Read
+                                            More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <!-- blog section -->
-    <x-modal></x-modal>
+    <x-modal />
 </x-layouts>
