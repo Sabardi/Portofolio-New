@@ -3,9 +3,9 @@
 @include('front.include.meta')
 @include('front.include.styles')
 
-<body> 
+<body>
     <!---header-and-banner-section-->
-    <div class="header-and-banner-con w-100 float-left position-relative">
+    <div class="float-left header-and-banner-con w-100 position-relative">
         <div class="header-and-banner-inner-con">
             @include('front.include.navbar')
 

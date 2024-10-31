@@ -2,26 +2,29 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\PortofolioResource\Pages;
-use App\Filament\Resources\PortofolioResource\RelationManagers;
-use App\Models\Portofolio;
+use App\Filament\Resources\ArticleResource\Pages;
+use App\Filament\Resources\ArticleResource\RelationManagers;
+use App\Models\Article;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\CheckboxColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Validation\Rules\Enum;
 
-class PortofolioResource extends Resource
+class ArticleResource extends Resource
 {
-    protected static ?string $model = Portofolio::class;
+    protected static ?string $model = Article::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -29,23 +32,29 @@ class PortofolioResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('title')
-                    ->required()
-                    ->minLength(3)
-                    ->maxLength(255),
+                Grid::make(2) // Mengatur layout agar tiap elemen berada di satu kolom (1 kolom per baris)
+                    ->schema([
+                        TextInput::make('title')
+                            ->required()
+                            ->minLength(10)
+                            ->maxLength(255),
 
-                FileUpload::make('thumbnail')
-                    ->image()
-                    ->required(),
+                        FileUpload::make('thumbnail')
+                            ->image()
+                            ->required(),
 
-                FileUpload::make('photo')
-                    ->image()
-                    ->disk('public')
-                    ->directory('portofolio')
-                    ->required(),
+                        FileUpload::make('photo')
+                            ->image()
+                            ->disk('public')
+                            ->directory('portofolio')
+                            ->required(),
+                    ]),
 
-                RichEditor::make('content')
-                    ->required(),
+                    Grid::make(1)
+                    ->schema([
+                        RichEditor::make('content')
+                            ->required(),
+                    ]),
             ]);
     }
 
@@ -78,16 +87,12 @@ class PortofolioResource extends Resource
                     ->label('Author')
                     ->sortable()
                     ->searchable(),
-
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\ViewAction::make(),
-
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -106,9 +111,9 @@ class PortofolioResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListPortofolios::route('/'),
-            'create' => Pages\CreatePortofolio::route('/create'),
-            'edit' => Pages\EditPortofolio::route('/{record}/edit'),
+            'index' => Pages\ListArticles::route('/'),
+            'create' => Pages\CreateArticle::route('/create'),
+            'edit' => Pages\EditArticle::route('/{record}/edit'),
         ];
     }
 }

@@ -2,8 +2,7 @@
 
 namespace App\Repositories\Contracts;
 
-interface PortfolioRepositoryInterface
+interface ArticleRepositoryInterface
 {
     public function all();
-    public function firts();
 }

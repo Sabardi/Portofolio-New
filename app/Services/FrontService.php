@@ -2,22 +2,20 @@
 
 namespace App\Services;
 
-use App\Repositories\Contracts\PortfolioRepositoryInterface;
+use App\Repositories\Contracts\ArticleRepositoryInterface;
 
 class FrontService
 {
-    protected $portfolioRepository;
+    protected $articleRepository;
 
-    public function __construct(PortfolioRepositoryInterface $portfolioRepository)
+    public function __construct(ArticleRepositoryInterface $articleRepository)
     {
-        $this->portfolioRepository = $portfolioRepository;
+        $this->articleRepository = $articleRepository;
     }
 
     public function getFrontPageData()
     {
-        $portofolios = $this->portfolioRepository->all();
-        $portofoliosFirst = $this->portfolioRepository->firts();
-
-        return compact('portofolios', 'portofoliosFirst');
+        $articles = $this->articleRepository->all();
+        return compact('articles');
     }
 }

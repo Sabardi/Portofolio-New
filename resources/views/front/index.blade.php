@@ -270,33 +270,10 @@
                         </a>
                     </div>
                 </div>
-                @foreach ($portofolios as $portfolio)
-                    <div class="filterDiv colors position-relative">
-                        <a href="#" data-toggle="modal" data-target="#modalporfolio2">
-                            <div class="portfolio-img position-relative">
-                                <figure>
-                                    <img src="{{ Storage::url($portfolio->photo) }}" alt="portfolio-img1"
-                                        class="img-fluid" width="730px" height="330px">
-
-                                    {{-- <img src="{{ asset('assets') }}/image/portfolio-img2.png" alt="portfolio-img1" class="img-fluid"> --}}
-                                </figure>
-                            </div>
-                        </a>
-                        <div class="text-left portfolio-img-content">
-                            <div class="portfolio-img-title d-inline-block">
-                                <h4>{{ $portfolio->title }}</h4>
-                                <p>{!! $portfolio->content !!}</p>
-                            </div>
-                            <a href="#" class="float-lg-right" data-toggle="modal"
-                                data-target="#modalporfolio2-icon">
-                                <i class="fas fa-arrow-right d-flex align-items-center justify-content-center"></i>
-                            </a>
-                        </div>
-
-                    </div>
-                @endforeach
-
-                {{-- <x-portofolio.card /> --}}
+                <x-portofolio.card />
+                <x-portofolio.card />
+                <x-portofolio.card />
+                <x-portofolio.card />
             </div>
         </div>
     </section>
@@ -312,40 +289,34 @@
                 </div>
                 <div class="blog-box wow fadeInUp">
                     <div class="row">
-                        @foreach ($portofolios as $portfolio)
-                            <div class="col-lg-4">
-                                <div class="mb-3 blog-box-item">
-                                    <div class="blog-img">
-                                        <a href="#" data-toggle="modal" data-target="#blog-model-1">
-                                            <figure class="mb-0">
-                                                <img src="{{ Storage::url($portfolio->photo) }}" alt="blog-img"
-                                                    class="img-fluid">
-                                            </figure>
-                                        </a>
-                                    </div>
-                                    <div class="blog-content">
-                                        <div class="blog-auteher-title">
-                                            <span>By {{ $portfolio->author }}</span>
-                                            {{-- <span class="float-lg-right">Mar 8, 2022</span> --}}
-                                            <span
-                                                class="float-lg-right">{{ $portfolio->created_at->format('M j, Y') }}</span>
-                                        </div>
-                                        <a href="#" data-toggle="modal" data-target="#blog-model-1">
-                                            <h4>{{ Str::words($portfolio->title, 15) }}</h4>
-                                        </a>
-                                        <p>{!! Str::words($portfolio->content, 15) !!}
-                                        </p>
-                                        <a href="#" data-toggle="modal" data-target="#blog-model-1">Read
-                                            More</a>
-                                    </div>
+                        @forelse ($articles as $article)
+                            <x-artikel.card id="{{ $article->slug }}" thumbnail="{{ $article->thumbnail }}"
+                                title="{{ $article->title }}" author="{{ $article->author }}"
+                                date="{{ $article->created_at->format('M j, Y') }}">
+                                <p>{!! Str::words($article->content, 15) !!}
+                                </p>
+                            </x-artikel.card>
+                            <x-modal.modal id="{{ $article->slug }}" thumbnail="{{ $article->thumbnail }}" author="{{ $article->author }}" date="{{ $article->created_at->format('M j, Y') }}"
+                                title="{{ $article->title }}" content="{{ $article->content }}" >
+                                <p class="mb-2 mb-md-4">
+                                    {!! $article->content !!}
+                                </p>
+                            </x-modal.modal>
+                        @empty
+                            <div class="flex flex-col items-center justify-center py-16">
+                                <div class="text-center">
+                                    <img src="{{ asset('images/empty-content.svg') }}" alt="Konten Kosong"
+                                        class="w-40 h-40 mx-auto mb-6">
+                                    <h2 class="text-2xl font-semibold text-gray-700">Tidak Ada Artikel Tersedia</h2>
+                                    <p class="mt-2 text-gray-500">Konten yang Anda cari belum tersedia saat ini.
+                                        Silakan periksa kembali nanti.</p>
                                 </div>
                             </div>
-                        @endforeach
+                        @endforelse
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- blog section -->
-    <x-modal />
+
 </x-layouts>

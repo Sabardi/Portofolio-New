@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('portofolios', function (Blueprint $table) {
+        Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->string('slug');
-            $table->string('thumbnail');
-            $table->string('photo');
-            $table->longText('content');
+            $table->string('thumbnail')->nullable();
+            $table->string('photo')->nullable();
+            $table->text('content');
             $table->string('author')->default('SABARDI');
             $table->timestamps();
         });
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('portofolios');
+        Schema::dropIfExists('articles');
     }
 };
