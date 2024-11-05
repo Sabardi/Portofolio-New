@@ -6,10 +6,12 @@ use App\Filament\Resources\CategoriResource\Pages;
 use App\Filament\Resources\CategoriResource\RelationManagers;
 use App\Models\Categori;
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -28,6 +30,18 @@ class CategoriResource extends Resource
                 TextInput::make('name')
                     ->required()
                     ->maxLength(255),
+
+                TextInput::make('description')
+                    ->required()
+                    ->minLength(10)
+                    ->maxLength(255),
+
+                FileUpload::make('icon')
+                    ->image()
+                    ->disk('public')
+                    ->directory('category')
+                    ->required(),
+
             ]);
     }
 
@@ -40,12 +54,25 @@ class CategoriResource extends Resource
                     ->sortable()
                     ->searchable()
                     ->limit(50),
+
+                TextColumn::make('description')
+                    ->label('Description')
+                    ->sortable()
+                    ->searchable()
+                    ->limit(50),
+
+                ImageColumn::make('icon')
+                    ->label('Icon')
+                    ->sortable(),
+
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

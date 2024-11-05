@@ -8,5 +8,7 @@ class Categori extends Model
 {
     protected $fillable = [
         'name',
+        'description',
+        'icon',
     ];
 }

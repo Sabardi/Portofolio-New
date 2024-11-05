@@ -2,30 +2,27 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\ArticleResource\Pages;
-use App\Filament\Resources\ArticleResource\RelationManagers;
-use App\Models\Article;
+use App\Filament\Resources\TutorialResource\Pages;
+use App\Filament\Resources\TutorialResource\RelationManagers;
+use App\Models\Tutorial;
 use Filament\Forms;
-use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Grid;
-use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Columns\CheckboxColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Illuminate\Validation\Rules\Enum;
 
-class ArticleResource extends Resource
+class TutorialResource extends Resource
 {
-    protected static ?string $model = Article::class;
+    protected static ?string $model = Tutorial::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -40,22 +37,12 @@ class ArticleResource extends Resource
                             ->minLength(10)
                             ->maxLength(255),
 
-                        FileUpload::make('thumbnail')
-                            ->image()
+                        Select::make('category_id')
+                            ->label('Category')
+                            ->relationship('category', 'name') // Use 'category' instead of 'categoris'
+                            ->searchable()
+                            ->preload()
                             ->required(),
-
-                        FileUpload::make('photo')
-                            ->image()
-                            ->disk('public')
-                            ->directory('articles')                                                                                                 
-                            ->required(),
-
-                        // Select::make('category_id')
-                        //     ->label('Category')
-                        //     ->relationship('category', 'name') // Use 'category' instead of 'categoris'
-                        //     ->searchable()
-                        //     ->preload()
-                        //     ->required(),
 
                     ]),
 
@@ -77,31 +64,30 @@ class ArticleResource extends Resource
                     ->searchable()
                     ->limit(50),
 
-
-                TextColumn::make('slug')
-                    ->label('Slug')
+                TextColumn::make('category.name')
+                    ->label('Category')
                     ->sortable()
                     ->searchable()
-                    ->limit(10),
+                    ->limit(50),
 
-                ImageColumn::make('thumbnail')
-                    ->label('Thumbnail')
+                ImageColumn::make('category.icon')
+                    ->label('Icon')
                     ->sortable(),
 
-                ImageColumn::make('photo')
-                    ->label('Photo')
-                    ->sortable(),
-
-                TextColumn::make('author')
-                    ->label('Author')
-                    ->sortable()
-                    ->searchable(),
             ])
             ->filters([
-                //
+                SelectFilter::make('category_id')
+                    ->label('Category')
+                    ->relationship('category', 'name') // Access the category relationship and display name
+                    ->searchable()
+                    ->preload(),
+
             ])
+
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -120,9 +106,9 @@ class ArticleResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListArticles::route('/'),
-            'create' => Pages\CreateArticle::route('/create'),
-            'edit' => Pages\EditArticle::route('/{record}/edit'),
+            'index' => Pages\ListTutorials::route('/'),
+            'create' => Pages\CreateTutorial::route('/create'),
+            'edit' => Pages\EditTutorial::route('/{record}/edit'),
         ];
     }
 }

@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('categoris', function (Blueprint $table) {
+        Schema::create('tutorials', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('description');
-            $table->string('icon')->nullable();
+            $table->string('title');
+            $table->string('slug');
+            $table->text('content');
+            $table->string('author')->default('SABARDI');
+            $table->foreignId('category_id')->constrained('categoris')->onDelete('restrict');
             $table->timestamps();
         });
     }
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categoris');
+        Schema::dropIfExists('tutorials');
     }
 };

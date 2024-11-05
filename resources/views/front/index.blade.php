@@ -154,24 +154,28 @@
                 </div>
                 <div class="service-box wow fadeInUp">
                     <div class="row">
-                        <div class="mb-4 col-lg-6 col-md-6">
-                            <a href="">
-                                <div class="service-box-item">
-                                    <figure class="mb-0">
-                                        <img src="{{ asset('assets') }}/image/service-icon1.png" alt="service-icon"
-                                            class="img-fluid">
-                                    </figure>
-                                    <div class="service-box-item-content">
-                                        <h4>Ui/Ux Design</h4>
-                                        <p>Dolor repellendus temporibus autem
-                                            quibusdam officiis debitis rerum neces
-                                            aibus minima veniam.
-                                        </p>
-                                        <a href="#" data-toggle="modal" data-target="#Ui-Design">Read More</a>
+                        @forelse ($categories as $category)
+                            <div class="mb-4 col-lg-6 col-md-6">
+                                <a href="">
+                                    <div class="service-box-item">
+                                        <figure class="mb-0">
+                                            <img src="{{ Storage::url($category->icon) }}" alt="{{ $category->name }}"
+                                                class="img-fluid">
+                                        </figure>
+                                        <div class="service-box-item-content">
+                                            <h4>{{ $category->name }}</h4>
+                                            <p>
+                                                {{Str::words($category->description, 10) }}
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                        </div>
+                                </a>
+                            </div>
+                        @empty
+                            <div class="text-center">
+                                <p>No tutorials available.</p>
+                            </div>
+                        @endforelse
                     </div>
                 </div>
             </div>
@@ -245,8 +249,9 @@
                                 <p>{!! Str::words($article->content, 15) !!}
                                 </p>
                             </x-artikel.card>
-                            <x-modal.modal id="{{ $article->slug }}" thumbnail="{{ $article->thumbnail }}" author="{{ $article->author }}" date="{{ $article->created_at->format('M j, Y') }}"
-                                title="{{ $article->title }}" content="{{ $article->content }}" >
+                            <x-modal.modal id="{{ $article->slug }}" thumbnail="{{ $article->thumbnail }}"
+                                author="{{ $article->author }}" date="{{ $article->created_at->format('M j, Y') }}"
+                                title="{{ $article->title }}" content="{{ $article->content }}">
                                 <p class="mb-2 mb-md-4">
                                     {!! $article->content !!}
                                 </p>
