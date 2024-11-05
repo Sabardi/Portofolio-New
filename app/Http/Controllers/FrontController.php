@@ -24,10 +24,8 @@ class FrontController extends Controller
 
     public function showTutorialsByCategory(string $slug): View
     {
-        // Fetch the category by slug
         $category = Categori::where('slug', $slug)->firstOrFail();
 
-        // Fetch tutorials by category
         $tutorials = $this->frontService->getTutorialsByCategory($category);
 
         return view('front.tutorial.index', compact('tutorials', 'category'));
@@ -35,7 +33,6 @@ class FrontController extends Controller
 
     public function showTutorial($slug): View
     {
-        // Find the tutorial by slug
         $tutorial = $this->frontService->getTutorialBySlug($slug);
 
         if (!$tutorial) {

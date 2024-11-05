@@ -16,7 +16,6 @@ class TutorialRepository implements TutorialRepositoryInterface
 
     public function showCategory(Categori $category): Collection
     {
-        // Assuming there is a relationship between Tutorial and Categori, like `category_id`
         return Tutorial::where('category_id', $category->id)->get();
     }
 
