@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Repositories\Contracts\ArticleRepositoryInterface;
 use App\Repositories\Contracts\CategoriRepositoryInterface;
 use App\Repositories\Contracts\TutorialRepositoryInterface;
+use App\Models\Categori;
 
 class FrontService
 {
@@ -27,4 +28,15 @@ class FrontService
 
         return compact('articles', 'tutorials', 'categories');
     }
+
+    public function getTutorialsByCategory(Categori $category)
+    {
+        return $this->tutorialRepository->showCategory($category);
+    }
+
+    public function getTutorialBySlug($slug)
+    {
+        return $this->tutorialRepository->findBySlug($slug);
+    }
+
 }
