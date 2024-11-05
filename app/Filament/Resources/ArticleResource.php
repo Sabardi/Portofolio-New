@@ -10,6 +10,7 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -32,7 +33,7 @@ class ArticleResource extends Resource
     {
         return $form
             ->schema([
-                Grid::make(2) // Mengatur layout agar tiap elemen berada di satu kolom (1 kolom per baris)
+                Grid::make(2)
                     ->schema([
                         TextInput::make('title')
                             ->required()
@@ -46,11 +47,19 @@ class ArticleResource extends Resource
                         FileUpload::make('photo')
                             ->image()
                             ->disk('public')
-                            ->directory('portofolio')
+                            ->directory('articles')
                             ->required(),
+
+                        // Select::make('category_id')
+                        //     ->label('Category')
+                        //     ->relationship('category', 'name') // Use 'category' instead of 'categoris'
+                        //     ->searchable()
+                        //     ->preload()
+                        //     ->required(),
+
                     ]),
 
-                    Grid::make(1)
+                Grid::make(1)
                     ->schema([
                         RichEditor::make('content')
                             ->required(),
