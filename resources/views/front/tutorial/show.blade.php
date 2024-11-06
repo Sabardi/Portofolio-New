@@ -4,13 +4,13 @@
             <div class="form-main-inner-con position-relative">
                 <div class="text-center generic-title">
                     <div class="mb-lg-5">
-                        <h2>Tutorial Title: How to Code in Python</h2>
-                        <p>Category: Programming</p>
+                        <h2>{{ $tutorial->title }}</h2>
+                        {{-- <p>Category: {{ $tutorial->category->name ?? 'Uncategorized' }}</p> --}}
                     </div>
                 </div>
 
                 <div class="content">
-                    <p>This is the content of the tutorial. Here, you would typically include the main body of your tutorial with code examples, explanations, and any other relevant information.</p>
+                    {!! $tutorial->content !!}
                 </div>
             </div>
         </div>
