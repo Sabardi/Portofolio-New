@@ -7,7 +7,7 @@
                         <img src="{{ Storage::url($category->icon ) }}" alt="{{$category->name}}" class="img-fluid">
                     </div>
                     <h2 class="mb-0 text-uppercase">{{ $category->name }} Tutorials</h2>
-                    <p class="font-weight-lighter text-muted">{{ $category->description }}</p>
+                        <p class="text-justify font-weight-lighter text-muted">{{ $category->description }}</p>
                 </div>
 
 
