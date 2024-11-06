@@ -4,7 +4,7 @@
             <div class="form-main-inner-con position-relative">
                 <div class="text-center generic-title">
                     <div class="mb-4">
-                        <img src="{{ Storage::url($category->icon ) }}" alt="">
+                        <img src="{{ Storage::url($category->icon ) }}" alt="{{$category->name}}" class="img-fluid">
                     </div>
                     <h2 class="mb-0 text-uppercase">{{ $category->name }} Tutorials</h2>
                     <p class="font-weight-lighter text-muted">{{ $category->description }}</p>
