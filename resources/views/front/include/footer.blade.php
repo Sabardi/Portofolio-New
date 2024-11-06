@@ -1,17 +1,18 @@
 <!-- weight footer section -->
-<div class="w-100 float-left weight-footer-con position-relative">
+<div class="float-left w-100 weight-footer-con position-relative">
     <div class="container">
-        <div class="weight-footer-content text-center wow fadeInUp">
+        <div class="text-center weight-footer-content wow fadeInUp">
             <figure class="">
                 <h1 class="mb-0 text-white">SABARDI</h1>
             </figure>
             <div class="footer-navbar">
                 <ul class="list-unstyled">
-                    <li class="d-inline-block border-left-0 pl-0"><a href="#home">Home</a></li>
+                    <li class="pl-0 d-inline-block border-left-0"><a href="#home">Home</a></li>
                     <li class="d-inline-block"><a href="#about">About</a></li>
                     <li class="d-inline-block"><a href="#Portfolio">Portfolio</a></li>
-                    <li class="d-inline-block"><a href="#testimonials">Blog</a></li>
-                    <li class="d-inline-block pr-0"><a href="#Contact">Contact</a></li>
+                    <li class="d-inline-block"><a href="">Blog</a></li>
+                    <li class="d-inline-block"><a href="">Tutorial</a></li>
+                    <li class="pr-0 d-inline-block"><a href="#Contact">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-social-icon">
@@ -35,7 +36,7 @@
                 </ul>
             </div>
         </div>
-        <div class="copy-right-content text-center">
+        <div class="text-center copy-right-content">
             <p class="mb-0">Copyright 2024| All Rights Reserved.</p>
         </div>
     </div>
