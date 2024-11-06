@@ -155,25 +155,26 @@
                 <div class="service-box wow fadeInUp">
                     <div class="row">
                         @forelse ($categories as $category)
-                        <div class="mb-4 col-lg-6 col-md-6">
-                            <a href="{{ route('tutorials.category', $category->slug) }}">
-                                <div class="service-box-item">
-                                    <figure class="mb-0">
-                                        <img src="{{ Storage::url($category->icon) }}" alt="{{ $category->name }}" class="img-fluid">
-                                    </figure>
-                                    <div class="service-box-item-content">
-                                        <h4>{{ $category->name }}</h4>
-                                        <p>{{ Str::words($category->description, 10) }}</p>
+                            <div class="mb-4 col-lg-6 col-md-6">
+                                <a href="{{ route('tutorials.category', $category->slug) }}">
+                                    <div class="service-box-item">
+                                        <figure class="mb-0">
+                                            <img src="{{ Storage::url($category->icon) }}" alt="{{ $category->name }}"
+                                                class="img-fluid">
+                                        </figure>
+                                        <div class="service-box-item-content">
+                                            <h4>{{ $category->name }}</h4>
+                                            <p>{{ Str::words($category->description, 10) }}</p>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                        </div>
-                    @empty
-                        <div class="text-center">
-                            <p>No tutorials available.</p>
-                        </div>
-                    @endforelse
-                        
+                                </a>
+                            </div>
+                        @empty
+                            <div class="text-center">
+                                <p>No tutorials available.</p>
+                            </div>
+                        @endforelse
+
                     </div>
                 </div>
             </div>

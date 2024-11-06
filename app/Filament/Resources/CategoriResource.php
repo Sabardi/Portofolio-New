@@ -7,6 +7,7 @@ use App\Filament\Resources\CategoriResource\RelationManagers;
 use App\Models\Categori;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -31,10 +32,14 @@ class CategoriResource extends Resource
                     ->required()
                     ->maxLength(255),
 
-                TextInput::make('description')
+                Textarea::make('description')
                     ->required()
-                    ->minLength(10)
-                    ->maxLength(255),
+                    ->placeholder('Enter a description...')
+                    ->rows(5)
+                    ->maxlength(500)
+                    ->helperText('Maximum 500 characters')
+                    ->extraAttributes(['style' => 'resize: vertical;']), // Allows vertical resizing only
+
 
                 FileUpload::make('icon')
                     ->image()

@@ -4,10 +4,9 @@
             <div class="form-main-inner-con position-relative">
                 <div class="text-center generic-title">
                     <div class="mb-4">
-                        <img src="https://laravel.com/img/logotype.min.svg" alt="">
+                        <img src="{{ Storage::url($category->icon ) }}" alt="">
                     </div>
-                    <h6 style="color: #16a085;">{{ $category->name }}</h6>
-                    <h2 class="mb-0">{{ $category->name }} Tutorials</h2>
+                    <h2 class="mb-0 text-uppercase">{{ $category->name }} Tutorials</h2>
                     <p class="font-weight-lighter text-muted">{{ $category->description }}</p>
                 </div>
 
